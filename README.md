@@ -16,7 +16,7 @@ clone the project in an empty folder.
 * git clone -b springdoc-openapi-intro https://github.com/teq-niq/sample.git  
 * cd sample  
 * mvn clean package  
-* java -jar target/sample-0.1.0.jar  
+* java -jar target/sample-0.0.1.jar  
   
 
 Do also read later article https://dzone.com/articles/doing-more-with-springdoc-openapi  
