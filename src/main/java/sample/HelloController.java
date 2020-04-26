@@ -21,6 +21,7 @@ package sample;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.money.MonetaryAmount;
+import javax.validation.Valid;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,13 +32,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
 	@PostMapping(value = "/foos1", consumes = MediaType.APPLICATION_JSON_VALUE)
-	MonetaryAmount getCurrency(@RequestBody CarDTO carDTO) {
+	MonetaryAmount getCurrency(@Valid @RequestBody CarDTO carDTO) {
 		return carDTO.price;
 	}
 
-	class CarDTO {
-		@JsonProperty("price")
-		MonetaryAmount price;
-	}
-
+	
 }

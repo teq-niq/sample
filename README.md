@@ -1,6 +1,6 @@
 # README #
 
-This branch contains code for discussing  a PR in spring doc.
+This branch contains a MonetaryAmount example.
 
 ### How do I get set up? ###
 Preerquisites:
@@ -10,7 +10,7 @@ Preerquisites:
 
 
 clone the project in an empty folder.   
-* git clone -b monetary-amount https://github.com/teq-niq/sample.git  
+* git clone -b monetary-amount-check https://github.com/teq-niq/sample.git  
 * cd sample  
 * mvn clean package  
 * java -jar target/sample-0.0.1.jar  
