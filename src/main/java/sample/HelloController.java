@@ -19,7 +19,8 @@
 package sample;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springdoc.core.converters.MonetaryAmount;
+
+import javax.money.MonetaryAmount;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
