@@ -9,6 +9,9 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Currency;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Person {
@@ -26,6 +29,9 @@ public class Person {
     private int age;
     @CreditCardNumber
     private String creditCardNumber;
+    @JsonProperty("worth")
+	@Currency("USD") 
+	private MyMoney worth;
 
     public String getCreditCardNumber() {
         return creditCardNumber;
@@ -83,4 +89,12 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
+
+	public MyMoney getWorth() {
+		return worth;
+	}
+
+	public void setWorth(MyMoney worth) {
+		this.worth = worth;
+	}
 }
