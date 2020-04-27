@@ -19,7 +19,7 @@ public class SampleApplication {
 	@PostConstruct
 	void init()
 	{
-		SpringDocUtils.getConfig().replaceWithClass(MonetaryAmount.class, MonetaryAmountConverter.class);
+		MonetaryAmountConverter.configure();
 	}
 
     public static void main(String[] args) {
