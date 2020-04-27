@@ -31,9 +31,7 @@ public class SampleApplication {
 	void init() {
 
 		CustomConverter.add(objectMapper);
-		//MonetaryAmountConverter.configure() call and the class MonetaryAmountConverter is not needed in next version
-		MonetaryAmountConverter.configure();
-
+		
 	}
 	
 	@Bean
