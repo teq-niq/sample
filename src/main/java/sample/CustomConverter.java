@@ -6,11 +6,8 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Currency;
-import org.javamoney.moneta.Money;
 
-import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import io.swagger.v3.core.converter.ModelConverters;
 import io.swagger.v3.core.jackson.ModelResolver;
@@ -19,7 +16,7 @@ import io.swagger.v3.oas.models.media.Schema;
 import sample.customvalidations.LocalDateTimeFormat;
 
 
-class CustomConverter extends ModelResolver {
+public class CustomConverter extends ModelResolver {
 
 	public static void add(ObjectMapper objectMapper)
 	{
@@ -111,24 +108,7 @@ class CustomConverter extends ModelResolver {
 
 	private Object describeAnnotation(Annotation annotation, Class<? extends Annotation> annotationType) {
 		Object ret=true;
-		if(annotationType==Currency.class)
-		{
-			Currency cur=(Currency) annotation;
-			String[] value = cur.value();
-			if(value!=null && value.length>0)
-			{
-				if(value.length==1)
-				{
-					ret=value[0];
-				}
-				else
-				{
-					ret=value;
-				}
-			}
-			
-		}
-		else if(annotationType==sample.customvalidations.LocalDateTimeFormat.class)
+		if(annotationType==sample.customvalidations.LocalDateTimeFormat.class)
 		{
 			LocalDateTimeFormat format=(LocalDateTimeFormat) annotation;
 			StringBuilder sb= new StringBuilder();

@@ -1,7 +1,6 @@
 package sample;
 
 
-import javax.money.MonetaryAmount;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -10,11 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.hibernate.validator.constraints.Currency;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import sample.customvalidations.DateTimeType;
 import sample.customvalidations.LocalDateTimeFormat;
@@ -23,16 +18,7 @@ import sample.customvalidations.LocalDateTimeFormat;
 
 public class Person {
 	private long id;
-	@Currency("USD") 
-	@JsonProperty
-	private MonetaryAmount worth;
-	public MonetaryAmount getWorth() {
-		return worth;
-	}
-
-	public void setWorth(MonetaryAmount worth) {
-		this.worth = worth;
-	}
+	
 	
 	@LocalDateTimeFormat(pattern = "yyyyMMdd",   dateTimeType=DateTimeType.Date, message = "Invalid dateTimeField Format. It Should be in yyyyMMdd format")
 	private String registrationDate;
