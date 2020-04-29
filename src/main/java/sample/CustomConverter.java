@@ -83,10 +83,7 @@ class CustomConverter extends ModelResolver {
 							property.addExtension(extensionKey, value);
 							
 						}
-						else
-						{
-							System.out.println("found");
-						}
+						
 						 
 					 }
 				}
@@ -131,13 +128,7 @@ class CustomConverter extends ModelResolver {
 		else if(annotationType==sample.customvalidations.LocalDateTimeFormat.class)
 		{
 			LocalDateTimeFormat format=(LocalDateTimeFormat) annotation;
-			StringBuilder sb= new StringBuilder();
-			sb.append("pattern='");
-			sb.append(format.pattern());
-			sb.append("',dateTimeType='");
-			sb.append(format.dateTimeType().name());
-			sb.append("'");
-			ret=sb.toString();
+			ret= new DateTimeFormatData(format.pattern(), format.dateTimeType().name());
 			
 		}
 		
