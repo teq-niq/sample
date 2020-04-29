@@ -115,17 +115,14 @@ class CustomConverter extends ModelResolver {
 		if(annotationType==Currency.class)
 		{
 			Currency cur=(Currency) annotation;
-			String[] value = cur.value();
-			if(value!=null && value.length>0)
+			String[] values = cur.value();
+			if(values!=null && values.length>0)
 			{
-				if(value.length==1)
-				{
-					ret=value[0];
+				List<AllowedCurrencyData> data= new ArrayList<>();
+				for (String value : values) {
+					data.add(new AllowedCurrencyData(value));
 				}
-				else
-				{
-					ret=value;
-				}
+				ret=data;
 			}
 			
 		}

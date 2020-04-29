@@ -23,7 +23,7 @@ import sample.customvalidations.LocalDateTimeFormat;
 
 public class Person {
 	private long id;
-	@Currency("USD") 
+	@Currency({"USD", "EUR"}) 
 	@JsonProperty
 	private MonetaryAmount worth;
 	public MonetaryAmount getWorth() {
