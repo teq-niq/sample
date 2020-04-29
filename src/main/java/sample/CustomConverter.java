@@ -1,6 +1,7 @@
 package sample;
 
 import java.lang.annotation.Annotation;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,6 +17,7 @@ import io.swagger.v3.core.converter.ModelConverters;
 import io.swagger.v3.core.jackson.ModelResolver;
 import io.swagger.v3.core.jackson.TypeNameResolver;
 import io.swagger.v3.oas.models.media.Schema;
+import sample.customvalidations.DateTimeType;
 import sample.customvalidations.LocalDateTimeFormat;
 
 
@@ -128,7 +130,10 @@ class CustomConverter extends ModelResolver {
 		else if(annotationType==sample.customvalidations.LocalDateTimeFormat.class)
 		{
 			LocalDateTimeFormat format=(LocalDateTimeFormat) annotation;
-			ret= new DateTimeFormatData(format.pattern(), format.dateTimeType().name());
+			Map<String, Object> data= new HashMap<>();
+			data.put("pattern", format.pattern());
+			data.put("dateTimeType", format.dateTimeType());
+			ret= data;
 			
 		}
 		
