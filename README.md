@@ -12,7 +12,7 @@ Preerquisites:
 
 
 clone the project in an empty folder.   
-* git clone -b extending1 https://github.com/teq-niq/sample.git  
+* git clone -b extension-variation1 https://github.com/teq-niq/sample.git  
 * cd sample  
 * mvn clean package  
 * java -jar target/sample-0.0.1.jar  
