@@ -1,7 +1,9 @@
 package sample;
 
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -130,9 +132,10 @@ class CustomConverter extends ModelResolver {
 		else if(annotationType==sample.customvalidations.LocalDateTimeFormat.class)
 		{
 			LocalDateTimeFormat format=(LocalDateTimeFormat) annotation;
-			Map<String, Object> data= new HashMap<>();
-			data.put("pattern", format.pattern());
-			data.put("dateTimeType", format.dateTimeType());
+			List<KeyValue> data= new ArrayList<>();
+			data.add(new KeyValue("pattern", format.pattern()));
+			data.add(new KeyValue("dateTimeType", format.dateTimeType()));
+
 			ret= data;
 			
 		}
