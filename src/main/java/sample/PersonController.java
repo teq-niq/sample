@@ -22,12 +22,6 @@ public class PersonController {
 	private Random ran = new Random(); 
 	@RequestMapping(path = "/person", method = RequestMethod.POST)
 	public Person person(@Valid @RequestBody Person person) {
-		 
-	     int nxt = ran.nextInt(10); 
-	     if(nxt>=5)
-	     {
-	    	 throw new RuntimeException("Breaking logic");
-	     }
 		return person;
 	}
 	@RequestMapping(path = "/personByLastName", method = RequestMethod.GET)
