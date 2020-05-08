@@ -1,8 +1,10 @@
 package sample;
 
 import javax.annotation.PostConstruct;
+import javax.money.MonetaryAmount;
 
 import org.javamoney.moneta.Money;
+import org.springdoc.core.SpringDocUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -29,7 +31,8 @@ public class SampleApplication {
 
 	@PostConstruct
 	void init() {
-
+		SpringDocUtils.getConfig().replaceWithClass(MonetaryAmount.class, org.springdoc.core.converters.MonetaryAmount.class);
+		
 		CustomConverter.add(objectMapper);
 		
 	}
