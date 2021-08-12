@@ -31,7 +31,7 @@ public class SampleApplication {
 
 	@PostConstruct
 	void init() {
-		SpringDocUtils.getConfig().replaceWithClass(MonetaryAmount.class, org.springdoc.core.converters.MonetaryAmount.class);
+		SpringDocUtils.getConfig().replaceWithClass(MonetaryAmount.class, org.springdoc.core.converters.models.MonetaryAmount.class);
 		
 		CustomConverter.add(objectMapper);
 		
