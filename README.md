@@ -1,13 +1,24 @@
 # README #
 
-Each branch will contain code used in some of my articles 
-
-
-### What is this repository for? ###
-
-* Examples to support articles about springdoc-openapi
+This branch contains code for -.
 
 ### How do I get set up? ###
-* [springdoc-openapi-intro](https://github.com/teq-niq/sample/tree/springdoc-openapi-intro) Branch contains code for [dzone article](https://dzone.com/articles/openapi-3-documentation-with-spring-boot)  explaining how validation constraints can automatically enrich swagger documentation and show project build information in swagger documentation.    
-* [springdoc-openapi-doingmore](https://github.com/teq-niq/sample/tree/springdoc-openapi-doingmore) Branch contains code for [dzone article](https://dzone.com/articles/doing-more-with-springdoc-openapi)  explaining how fully qualified names can be displayed , centralized exception reporting can be done.  
+Preerquisites:
+* Java 8  
+* Maven 3  
+* Git  
 
+Follow steps in article- .
+Its a simple maven based spring boot project.
+
+Or else.
+clone the project in an empty folder.   
+* git clone -b custom-validators https://github.com/teq-niq/sample.git  
+* cd sample  
+* mvn clean package  
+* java -jar target/sample-0.0.1.jar  
+  
+
+Do also read previous articles 
+* https://dzone.com/articles/doing-more-with-springdoc-openapi  
+* https://dzone.com/articles/openapi-3-documentation-with-spring-boot
