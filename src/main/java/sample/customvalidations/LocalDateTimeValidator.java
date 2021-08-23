@@ -10,34 +10,38 @@ import javax.validation.ConstraintValidatorContext;
 
 public class LocalDateTimeValidator implements ConstraintValidator<LocalDateTimeFormat, String> {
 
-    private String pattern;
-    private DateTimeType dateTimeType;
+	private String pattern;
 
-    @Override
-    public void initialize(LocalDateTimeFormat constraintAnnotation) {
-        this.pattern = constraintAnnotation.pattern();
-        this.dateTimeType = constraintAnnotation.dateTimeType();
-    }
+	private DateTimeType dateTimeType;
 
-    @Override
-    public boolean isValid(String object, ConstraintValidatorContext constraintContext) {
-        if ( object == null || "".equals(object)) {
-            return true;
-        }
+	@Override
+	public void initialize(LocalDateTimeFormat constraintAnnotation) {
+		this.pattern = constraintAnnotation.pattern();
+		this.dateTimeType = constraintAnnotation.dateTimeType();
+	}
 
-        try {
-        	DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
-        	if(DateTimeType.Time.equals(dateTimeType)) {
-        		LocalTime.parse(object, dateFormatter);
-        	}else if(DateTimeType.Date.equals(dateTimeType)) {
-        		LocalDate.parse(object, dateFormatter);
-        	}else {
-        		LocalDateTime.parse(object, dateFormatter);
-        	}
-            return true;
-        } catch (Exception e) {
-           // e.printStackTrace();
-            return false;
-        }
-    }
+	@Override
+	public boolean isValid(String object, ConstraintValidatorContext constraintContext) {
+		if (object == null || "".equals(object)) {
+			return true;
+		}
+
+		try {
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+			if (DateTimeType.Time.equals(dateTimeType)) {
+				LocalTime.parse(object, dateFormatter);
+			}
+			else if (DateTimeType.Date.equals(dateTimeType)) {
+				LocalDate.parse(object, dateFormatter);
+			}
+			else {
+				LocalDateTime.parse(object, dateFormatter);
+			}
+			return true;
+		}
+		catch (Exception e) {
+			// e.printStackTrace();
+			return false;
+		}
+	}
 }
