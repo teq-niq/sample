@@ -3,12 +3,13 @@ package sample.config;
 import java.lang.annotation.Annotation;
 import java.util.Map;
 
+import org.springframework.context.annotation.Configuration;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.swagger.v3.core.jackson.ModelResolver;
 import io.swagger.v3.oas.models.media.Schema;
 import sample.customvalidations.LocalDateTimeFormat;
-
-import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class CustomOpenApiValidator extends ModelResolver {
