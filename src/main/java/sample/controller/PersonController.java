@@ -22,8 +22,10 @@ import sample.model.Person;
 public class PersonController {
 
 	@PostMapping(path = "/person",
-			consumes = MediaType.APPLICATION_JSON_VALUE, 
-			produces= MediaType.APPLICATION_JSON_VALUE)
+			consumes = {MediaType.APPLICATION_JSON_VALUE, 
+					MediaType.APPLICATION_XML_VALUE},
+			produces= {MediaType.APPLICATION_JSON_VALUE, 
+					MediaType.APPLICATION_XML_VALUE})
 	@io.swagger.v3.oas.annotations.parameters.RequestBody(
 			content = @Content(
 			schema =@Schema(oneOf = {Person.class, Employee.class})))
@@ -33,7 +35,8 @@ public class PersonController {
 						schema =@Schema(oneOf = {Person.class, Employee.class}))})})
 	
 	
-	public ResponseEntity<Human> person(@Valid @RequestBody Human human) {
+	public ResponseEntity<Human> person(@Valid  @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE),
+			@Content(mediaType = MediaType.APPLICATION_XML_VALUE)} ) Human human) {
 		System.out.println("human="+human);
 		if(human instanceof Person)
 		{

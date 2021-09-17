@@ -5,6 +5,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -23,6 +26,7 @@ import lombok.Data;
     @JsonSubTypes.Type(value = Person.class, name="P"),
     @JsonSubTypes.Type(value = Employee.class, name = "E")
 })
+
 public abstract class Human {
 	@Size(min = 2)
 	private String firstName;
@@ -35,5 +39,5 @@ public abstract class Human {
 	@Max(30)
 	private int age;
 	
-	private HumanType humanType;
+	//private HumanType humanType;
 }
