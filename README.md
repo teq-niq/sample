@@ -1,13 +1,9 @@
-# README #
+This may not be the best way to achieve this.  
+Its definitely a hack.  
+However it does demonstrates a  need to be able to extend io.swagger.v3.core.jackson.SchemaSerializer and replace it with whatever works for the user.  
+This can also help get more community driven extensions of io.swagger.v3.core.jackson.SchemaSerializer and cause improvement in io.swagger.v3.core.jackson.SchemaSerializer
 
-Each branch will contain code used in some of my articles 
+The pro for this hack is that no swagger code needs changing.  
+The con is that SchemaSerializerReplacer.java must be created in package : com.fasterxml.jackson.databind.cfg
 
-
-### What is this repository for? ###
-
-* Examples to support articles about springdoc-openapi
-
-### How do I get set up? ###
-* [springdoc-openapi-intro](https://github.com/teq-niq/sample/tree/springdoc-openapi-intro) Branch contains code for [dzone article](https://dzone.com/articles/openapi-3-documentation-with-spring-boot)  explaining how validation constraints can automatically enrich swagger documentation and show project build information in swagger documentation.    
-* [springdoc-openapi-doingmore](https://github.com/teq-niq/sample/tree/springdoc-openapi-doingmore) Branch contains code for [dzone article](https://dzone.com/articles/doing-more-with-springdoc-openapi)  explaining how fully qualified names can be displayed , centralized exception reporting can be done.  
-
+See input.txt for a sample json input for the request.

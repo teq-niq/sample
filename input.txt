@@ -1,0 +1,18 @@
+{
+  "operator": "and",
+  "parts":[{
+  "operator": "and",
+  "parts":[]
+},
+
+{
+  "operator": "or",
+  "parts":[]
+},
+
+{
+  "operator": "equals",
+  "field":"f1",
+  "value":"v1"
+}]
+}
