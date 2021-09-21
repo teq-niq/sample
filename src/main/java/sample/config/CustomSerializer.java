@@ -31,13 +31,13 @@ public class CustomSerializer extends SchemaSerializer {
             defaultSerializer.serialize(value, jgen, provider);
         } else {
             jgen.writeStartObject();
-            jgen.writeStringField("$ref", value.get$ref());
             String ref = value.get$ref();
             if(!ref.startsWith("#/components/schemas/"))
             {
             	ref="#/components/schemas/"+ref;
             	value.$ref(ref);
             }
+            jgen.writeStringField("$ref", value.get$ref());
             jgen.writeEndObject();
         }
     }
