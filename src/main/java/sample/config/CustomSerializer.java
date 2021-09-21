@@ -1,8 +1,6 @@
 package sample.config;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -40,32 +38,9 @@ public class CustomSerializer extends SchemaSerializer {
             	ref="#/components/schemas/"+ref;
             	value.$ref(ref);
             }
-           
-            //copyExtensions(value, jgen);
             jgen.writeEndObject();
         }
     }
-    //copy extensions
-	//related to 
-	//https://github.com/swagger-api/swagger-core/pull/3539
-	//Complex types are handled by ref
-	//It would be convenient in spite of their being ref to show 
-	//constraints by schema extensions
-
-    protected void copyExtensions(Schema value, JsonGenerator jgen) throws IOException {
-        Map<String, Object> extensions = value.getExtensions();
-        if(extensions!=null) {
-            Set<String> extensionsKeySet = extensions.keySet();
-            for (String extensionKey : extensionsKeySet) {
-                Object extensionValue = extensions.get(extensionKey);
-                if(extensionValue!=null) {
-                   jgen.writeObjectField(extensionKey, extensionValue);
-                } else {
-                    jgen.writeNullField(extensionKey);
-                }
-            }
-
-        }
-    }
+ 
 
 }

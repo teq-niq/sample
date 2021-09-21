@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>swagger-core-issue-3312-hack</artifactId>
+	<artifactId>swagger-core-issue-3312-better</artifactId>
 	<version>0.0.1</version>
 	<name>sample</name>
 	<description>Demo project for Spring Boot with openapi 3 documentation</description>
