@@ -22,7 +22,7 @@ import io.swagger.v3.oas.models.media.Schema;
 @Configuration
 class OpenApiConfig {
 	@Autowired
-	TypesCapturer missingFieldModelCorrector;
+	TypesCapturer typesCapturer;
 
 	@Bean
 	public OpenAPI customOpenAPI(@Value("${application-description}") String appDesciption, @Value("${application-version}") String appVersion) {
@@ -47,7 +47,7 @@ class OpenApiConfig {
 
 			@Override
 			public void customise(OpenAPI openApi) {
-				Map<String, Type> resolvedSchemas = missingFieldModelCorrector.getResolvedSchemas();
+				Map<String, Type> resolvedSchemas = typesCapturer.getResolvedSchemas();
 				
 				
 				Map<String, Schema> schemas = openApi.getComponents().getSchemas();
