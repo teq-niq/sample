@@ -1,12 +1,18 @@
 package sample.model;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.List;
+import java.util.Map;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
-@Schema(allOf = MyBaseDto.class)
+
 public class MyPartsDto extends MyBaseDto{
+	//problem only with this parts field
 	private MyBaseDto[] parts;
+	private List<MyBaseDto> parts1;
+	private Map<String, MyBaseDto> parts2;
+	private String stringFieldInParts;
 }
