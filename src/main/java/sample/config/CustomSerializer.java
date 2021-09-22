@@ -1,8 +1,6 @@
 package sample.config;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
