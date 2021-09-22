@@ -11,12 +11,12 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import io.swagger.v3.core.jackson.SchemaSerializer;
 import io.swagger.v3.oas.models.media.Schema;
 
-public class CustomSerializer extends SchemaSerializer {
+public class CustomSchemaSerializer extends SchemaSerializer {
 
 	//no harm done here and in super both refer to same object 
 	private JsonSerializer<Object> defaultSerializer;
 	 
-	public CustomSerializer(JsonSerializer<Object> serializer) {
+	public CustomSchemaSerializer(JsonSerializer<Object> serializer) {
 		super(serializer);
 		defaultSerializer = serializer;
 		

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.SerializationConfig;
 import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
 
 import io.swagger.v3.oas.models.media.Schema;
-import sample.config.CustomSerializer;
+import sample.config.CustomSchemaSerializer;
 
 public class SchemaSerializerReplacer {
 	
@@ -33,7 +33,7 @@ public class SchemaSerializerReplacer {
 		                    public JsonSerializer<?> modifySerializer(
 		                            SerializationConfig config, BeanDescription desc, JsonSerializer<?> serializer) {
 		                        if (Schema.class.isAssignableFrom(desc.getBeanClass())) {
-		                            return new CustomSerializer((JsonSerializer<Object>) serializer);
+		                            return new CustomSchemaSerializer((JsonSerializer<Object>) serializer);
 		                        }
 		                        return serializer;
 		                    }
