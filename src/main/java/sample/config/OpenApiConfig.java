@@ -47,14 +47,14 @@ class OpenApiConfig {
 
 			@Override
 			public void customise(OpenAPI openApi) {
-				Map<String, Type> resolvedSchemas = typesCapturer.getSchemaNameToTypeMap();
+				Map<String, Type> schemaNameToTypeMap = typesCapturer.getSchemaNameToTypeMap();
 				
 				
 				Map<String, Schema> schemas = openApi.getComponents().getSchemas();
 				Set<Entry<String, Schema>> entrySet = schemas.entrySet();
 				for (Entry<String, Schema> entry : entrySet) {
 					String key = entry.getKey();
-					Type type = resolvedSchemas.get(key);
+					Type type = schemaNameToTypeMap.get(key);
 					if(type!=null)
 					{
 						ResolvedSchema resolvedSchema = ModelConverters.getInstance().readAllAsResolvedSchema(type);
