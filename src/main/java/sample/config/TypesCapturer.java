@@ -17,10 +17,10 @@ import io.swagger.v3.oas.models.media.Schema;
 @Configuration
 public class TypesCapturer extends ModelResolver {
 
-	private final Map<String, Type>  resolvedSchemas= new HashMap<>();
+	private final Map<String, Type>  schemaNameToTypeMap= new HashMap<>();
 
-	public Map<String, Type> getResolvedSchemas() {
-		return resolvedSchemas;
+	public Map<String, Type> getSchemaNameToTypeMap() {
+		return schemaNameToTypeMap;
 	}
 
 	public TypesCapturer(ObjectMapper mapper) {
@@ -31,15 +31,15 @@ public class TypesCapturer extends ModelResolver {
 
 	@Override
 	public Schema resolve(AnnotatedType annotatedType, ModelConverterContext context, Iterator<ModelConverter> next) {
-		Schema resolve = super.resolve(annotatedType, context, next);
+		Schema resolvedSchema = super.resolve(annotatedType, context, next);
 		Type type = annotatedType.getType();
-		String name = resolve.getName();
-		if(name!=null)
+		String schemaName = resolvedSchema.getName();
+		if(schemaName!=null)
         {
-     	  resolvedSchemas.put(name, type);
+     	  schemaNameToTypeMap.put(schemaName, type);
         }
 		
-		return resolve;
+		return resolvedSchema;
 	}
 
 	
