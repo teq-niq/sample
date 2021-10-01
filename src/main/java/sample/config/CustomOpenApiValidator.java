@@ -1,17 +1,25 @@
 package sample.config;
 
 import java.lang.annotation.Annotation;
+
+import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.annotation.OptBoolean;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.core.jackson.ModelResolver;
 import io.swagger.v3.oas.models.media.Schema;
 import sample.customvalidations.LocalDateTimeFormat;
 
+import org.hibernate.validator.constraints.Currency;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class CustomOpenApiValidator extends ModelResolver {
+	
+	
 
 	private final Class[] handledValidations = { javax.validation.constraints.NotNull.class,
 			javax.validation.constraints.NotBlank.class,
@@ -25,7 +33,8 @@ class CustomOpenApiValidator extends ModelResolver {
 
 	private final Package[] allowedPackages = { handledValidations[0].getPackage(),
 			org.hibernate.validator.constraints.CreditCardNumber.class.getPackage(),
-			LocalDateTimeFormat.class.getPackage() };
+			LocalDateTimeFormat.class.getPackage() ,
+			JsonFormat.class.getPackage()};
 
 	public CustomOpenApiValidator(ObjectMapper mapper) {
 		super(mapper);
@@ -75,7 +84,54 @@ class CustomOpenApiValidator extends ModelResolver {
 			ret = new DateTimeFormatData(format.pattern(), format.dateTimeType().name());
 
 		}
+		else if (annotationType == JsonFormat.class) {
+			JsonFormat format = (JsonFormat) annotation;
+			Map<String, String> res= new HashMap<>();
+			ret = res;
+			extracted(res, "pattern", format.pattern());
+			extracted(res, "timezone", format.timezone());
+			extracted(res, "locale", format.locale());
+			Shape shape = format.shape();
+			if(shape!=null)
+			{
+				extracted(res, "shape", shape.name());
+			}
+			OptBoolean lenient = format.lenient();
+			if(lenient!=null)
+			{
+				extracted(res, "lenient", lenient.name());
+			}
+			
+			
+			
+
+		}
+		else if(annotationType==Currency.class)
+		{
+			Currency cur=(Currency) annotation;
+			String[] value = cur.value();
+			if(value!=null && value.length>0)
+			{
+				if(value.length==1)
+				{
+					ret=value[0];
+				}
+				else
+				{
+					ret=value;
+				}
+			}
+			
+		}
 		return ret;
+	}
+
+	private void extracted( Map<String, String> res, String key, String value) {
+		
+		if(value!=null && value.length()>0)
+		{
+			res.put(key, value);
+		}
 	}
 }
 

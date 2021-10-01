@@ -1,0 +1,12 @@
+{
+  "id": 0,
+  "firstName": "string",
+  "lastName": "string",
+  "email": "string@a.com",
+  "email1": "string@a.com",
+  "age": 30,
+  "creditCardNumber": "4111111111111111",
+  "registrationDate": "20211212",
+  "birthday": "2021-09-30",
+  "billAmount": "12 EUR"
+}

@@ -1,5 +1,8 @@
 package sample.model;
 
+import java.time.LocalDate;
+
+import javax.money.MonetaryAmount;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -13,6 +16,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Currency;
+
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import sample.customvalidations.DateTimeType;
 import sample.customvalidations.LocalDateTimeFormat;
 
@@ -45,5 +54,12 @@ public class Person {
 
 	@LocalDateTimeFormat(pattern = "yyyyMMdd", dateTimeType = DateTimeType.Date, message = "Invalid dateTimeField Format. It Should be in yyyyMMdd format")
 	private String registrationDate;
+	
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate birthday;
+	
+	@Currency({"USD", "EUR"}) 
+	@JsonProperty
+	private MonetaryAmount billAmount;
 
 }
