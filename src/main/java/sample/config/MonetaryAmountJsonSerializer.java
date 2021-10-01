@@ -23,7 +23,7 @@ public class MonetaryAmountJsonSerializer extends JsonSerializer<javax.money.Mon
 		Locale locale = LocaleContextHolder.getLocale();
 		final MonetaryAmountFormat format = MonetaryFormats.getAmountFormat(
 	            AmountFormatQueryBuilder.of(locale)
-	                    .set(CurrencyStyle.SYMBOL)
+	                    //.set(CurrencyStyle.SYMBOL)
 	                    .set("pattern", "#,##0.00### ¤")
 	                    .build()
 	    );
