@@ -1,6 +1,5 @@
 package sample.config;
 
-import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -9,8 +8,6 @@ import javax.money.format.AmountFormatQueryBuilder;
 import javax.money.format.MonetaryAmountFormat;
 import javax.money.format.MonetaryFormats;
 
-import org.javamoney.moneta.Money;
-import org.javamoney.moneta.format.CurrencyStyle;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 import io.swagger.v3.oas.models.media.Schema;

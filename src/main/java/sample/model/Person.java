@@ -14,14 +14,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Currency;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
+import lombok.Data;
 import sample.customvalidations.DateTimeType;
 import sample.customvalidations.LocalDateTimeFormat;
 
@@ -59,7 +58,18 @@ public class Person {
 	private LocalDate birthday;
 	
 	@Currency({"USD", "EUR"}) 
-	@JsonProperty
-	private MonetaryAmount billAmount;
+	@JsonFormat(pattern="#,##0.00### ¤")
+
+	private MonetaryAmount billAmount1;
+	
+	@Currency({"USD"}) 
+	@JsonFormat(pattern="#,##0.00### ¤" )
+
+	private MonetaryAmount billAmount2;
+	
+	@Currency("EUR") 
+	@JsonFormat(pattern="#,##0.00### ¤")
+
+	private MonetaryAmount billAmount3;
 
 }

@@ -1,11 +1,5 @@
 package sample.config;
 
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
-import io.swagger.v3.oas.models.media.Schema;
-import io.swagger.v3.oas.models.media.StringSchema;
-
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -13,14 +7,17 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.money.MonetaryAmount;
 
-import org.javamoney.moneta.Money;
 import org.springdoc.core.SpringDocUtils;
 import org.springdoc.core.customizers.OpenApiCustomiser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
-import org.zalando.jackson.datatype.money.MoneyModule;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.media.Schema;
 
 @Configuration
 class OpenApiConfig {

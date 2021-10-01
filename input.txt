@@ -8,5 +8,7 @@
   "creditCardNumber": "4111111111111111",
   "registrationDate": "20211212",
   "birthday": "2021-09-30",
-  "billAmount": "12 EUR"
+  "billAmount1": "12 EUR",
+  "billAmount2": "12 USD",
+  "billAmount3": "12 EUR"
 }

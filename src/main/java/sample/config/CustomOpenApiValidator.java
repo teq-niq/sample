@@ -1,20 +1,20 @@
 package sample.config;
 
 import java.lang.annotation.Annotation;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import org.hibernate.validator.constraints.Currency;
+import org.springframework.context.annotation.Configuration;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.OptBoolean;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.swagger.v3.core.jackson.ModelResolver;
 import io.swagger.v3.oas.models.media.Schema;
 import sample.customvalidations.LocalDateTimeFormat;
-
-import org.hibernate.validator.constraints.Currency;
-import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class CustomOpenApiValidator extends ModelResolver {
