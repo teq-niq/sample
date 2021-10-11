@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.hibernate.validator.constraints.Currency;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.annotation.NumberFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
@@ -91,19 +92,9 @@ class CustomOpenApiValidator extends ModelResolver {
 			extracted(res, "pattern", format.pattern());
 			extracted(res, "timezone", format.timezone());
 			extracted(res, "locale", format.locale());
-			Shape shape = format.shape();
-			if(shape!=null)
-			{
-				extracted(res, "shape", shape.name());
-			}
-			OptBoolean lenient = format.lenient();
-			if(lenient!=null)
-			{
-				extracted(res, "lenient", lenient.name());
-			}
 			
-			
-			
+			extractEnum(res, "shape",format.shape());
+			extractEnum(res, "lenient", format.lenient());
 
 		}
 		else if(annotationType==Currency.class)
@@ -123,6 +114,17 @@ class CustomOpenApiValidator extends ModelResolver {
 			}
 			
 		}
+//		else if(annotationType==NumberFormat.class)
+//		{
+//			NumberFormat nf=(NumberFormat) annotation;
+//			Map<String, String> res= new HashMap<>();
+//			ret = res;
+//			extracted(res, "pattern", nf.pattern());
+//			extractEnum(res, "lenient", nf.style());
+//			
+//			
+//			
+//		}
 		return ret;
 	}
 
@@ -131,6 +133,13 @@ class CustomOpenApiValidator extends ModelResolver {
 		if(value!=null && value.length()>0)
 		{
 			res.put(key, value);
+		}
+	}
+	
+	private void extractEnum(Map<String, String> res, String name, Enum anEnum) {
+		if(anEnum!=null)
+		{
+			extracted(res, name, anEnum.name());
 		}
 	}
 }
