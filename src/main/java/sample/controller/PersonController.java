@@ -1,6 +1,6 @@
 package sample.controller;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import sample.model.Person;
 

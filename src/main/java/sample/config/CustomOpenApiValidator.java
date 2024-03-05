@@ -13,15 +13,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 class CustomOpenApiValidator extends ModelResolver {
 
-	private final Class[] handledValidations = { javax.validation.constraints.NotNull.class,
-			javax.validation.constraints.NotBlank.class,
-			javax.validation.constraints.NotEmpty.class,
-			javax.validation.constraints.Min.class,
-			javax.validation.constraints.Max.class,
-			javax.validation.constraints.DecimalMin.class,
-			javax.validation.constraints.DecimalMax.class,
-			javax.validation.constraints.Pattern.class,
-			javax.validation.constraints.Size.class };
+	private final Class[] handledValidations = { jakarta.validation.constraints.NotNull.class,
+			jakarta.validation.constraints.NotBlank.class,
+			jakarta.validation.constraints.NotEmpty.class,
+			jakarta.validation.constraints.Min.class,
+			jakarta.validation.constraints.Max.class,
+			jakarta.validation.constraints.DecimalMin.class,
+			jakarta.validation.constraints.DecimalMax.class,
+			jakarta.validation.constraints.Pattern.class,
+			jakarta.validation.constraints.Size.class };
 
 	private final Package[] allowedPackages = { handledValidations[0].getPackage(),
 			org.hibernate.validator.constraints.CreditCardNumber.class.getPackage(),
@@ -32,8 +32,8 @@ class CustomOpenApiValidator extends ModelResolver {
 	}
 
 	@Override
-	protected void applyBeanValidatorAnnotations(Schema property, Annotation[] annotations, Schema parent) {
-		super.applyBeanValidatorAnnotations(property, annotations, parent);
+	protected void applyBeanValidatorAnnotations(Schema property, Annotation[] annotations, Schema parent, boolean applyNotNullAnnotations) {
+		super.applyBeanValidatorAnnotations(property, annotations, parent, applyNotNullAnnotations);
 		if (annotations != null) {
 			for (Annotation annotation : annotations) {
 				Class<? extends Annotation> annotationType = annotation.annotationType();
