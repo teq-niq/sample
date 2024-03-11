@@ -1,4 +1,5 @@
 package sample;
+
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,36 +11,33 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 
 @RestController
 public class PersonController {
-    @RequestMapping(path = "/person", method = RequestMethod.POST)
-    @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true, 
-    content = @Content(examples = {
+	@RequestMapping(path = "/person", method = RequestMethod.POST)
+	@io.swagger.v3.oas.annotations.parameters.RequestBody(required = true, content = @Content(examples = {
 			@ExampleObject(value = INVALID_REQUEST, name = "invalidRequest"),
 			@ExampleObject(value = VALID_REQUEST, name = "validRequest") }))
-    public Person person(@Valid @RequestBody Person person) {
-        return person;
-    }
-    
-    private static final String VALID_REQUEST = 
-"""
-{
-  "id": 0,
-  "firstName": "string",
-  "lastName": "string",
-  "email": "abc@abc.com",
-  "email1": "abc@abc.com",
-  "age": 20,
-  "creditCardNumber": "4111111111111111"
-}""";
-    
-    private static final String INVALID_REQUEST = 
-"""
-{
-  "id": 0,
-  "firstName": "string",
-  "lastName": "string",
-  "email": "abcabc.com",
-  "email1": "abc@abc.com",
-  "age": 17,
-  "creditCardNumber": "4111111111111111"
-}""";
+	public Person person(@Valid @RequestBody Person person) {
+		return person;
+	}
+
+	private static final String VALID_REQUEST = """
+			{
+			  "id": 0,
+			  "firstName": "string",
+			  "lastName": "string",
+			  "email": "abc@abc.com",
+			  "email1": "abc@abc.com",
+			  "age": 20,
+			  "creditCardNumber": "4111111111111111"
+			}""";
+
+	private static final String INVALID_REQUEST = """
+			{
+			  "id": 0,
+			  "firstName": "string",
+			  "lastName": "string",
+			  "email": "abcabc.com",
+			  "email1": "abc@abc.com",
+			  "age": 17,
+			  "creditCardNumber": "4111111111111111"
+			}""";
 }
