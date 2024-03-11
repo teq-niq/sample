@@ -13,8 +13,8 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 public class PersonController {
 	@RequestMapping(path = "/person", method = RequestMethod.POST)
 	@io.swagger.v3.oas.annotations.parameters.RequestBody(required = true, content = @Content(examples = {
-			@ExampleObject(value = INVALID_REQUEST, name = "invalidRequest"),
-			@ExampleObject(value = VALID_REQUEST, name = "validRequest") }))
+			@ExampleObject(value = INVALID_REQUEST, name = "invalidRequest", description = "Invalid Request"),
+			@ExampleObject(value = VALID_REQUEST, name = "validRequest", description = "Valid Request") }))
 	public Person person(@Valid @RequestBody Person person) {
 		return person;
 	}
@@ -36,8 +36,8 @@ public class PersonController {
 			  "firstName": "string",
 			  "lastName": "string",
 			  "email": "abcabc.com",
-			  "email1": "abc@abc.com",
+			  "email1": "abcabc.com",
 			  "age": 17,
-			  "creditCardNumber": "4111111111111111"
+			  "creditCardNumber": "411111111111111"
 			}""";
 }
